@@ -237,7 +237,7 @@ input, select, textarea { font-family: var(--font); }
 }
 
 .admin-topbar {
-  height: 64px;
+  min-height: 64px;
   background: var(--white);
   border-bottom: 1px solid var(--border);
   display: flex;
@@ -247,12 +247,34 @@ input, select, textarea { font-family: var(--font); }
   position: sticky;
   top: 0;
   z-index: 50;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 .topbar-title h1 { font-size: 1.2rem; font-weight: 600; color: var(--charcoal); }
 .topbar-title p  { font-size: .75rem; color: var(--muted); }
-.topbar-actions  { display: flex; align-items: center; gap: 12px; }
+.topbar-actions  { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .admin-topbar { 
+    height: auto; 
+    padding: 16px 20px 16px 64px; /* Space for hamburger */
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+  .topbar-actions { width: 100%; justify-content: space-between; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .topbar-actions { flex-direction: column; align-items: stretch; }
+  .topbar-actions > div { justify-content: space-between; }
+  .topbar-actions .btn { width: 100%; justify-content: center; }
+}
 
 .admin-content { padding: 28px; flex: 1; }
+
+@media (max-width: 900px) {
+  .admin-content { padding: 16px; }
+}
 
 /* ── KPI Cards ──────────────────────────────────────── */
 .kpi-grid {
@@ -598,6 +620,11 @@ input, select, textarea { font-family: var(--font); }
   transition: border-color .2s;
 }
 .search-input-wrap input:focus { outline: none; border-color: var(--terracotta); }
+
+@media (max-width: 600px) {
+  .table-toolbar { flex-direction: column; align-items: stretch; }
+  .search-input-wrap { max-width: 100%; }
+}
 
 /* ── Pagination ─────────────────────────────────────── */
 .pagination {
