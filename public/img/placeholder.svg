@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#F5EDE8"/>
+  <g opacity="0.35" transform="translate(200,250)">
+    <circle cx="0" cy="-60" r="40" fill="none" stroke="#C27B5A" stroke-width="2"/>
+    <line x1="-70" y1="20" x2="70" y2="20" stroke="#C27B5A" stroke-width="2"/>
+    <line x1="-70" y1="20" x2="0" y2="-20" stroke="#C27B5A" stroke-width="2"/>
+    <line x1="70" y1="20" x2="0" y2="-20" stroke="#C27B5A" stroke-width="2"/>
+    <text x="0" y="65" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#C27B5A" letter-spacing="2">ZEISKIN</text>
+  </g>
+</svg>

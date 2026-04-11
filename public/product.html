@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produit — ZEISKIN</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    .product-page { padding-top: calc(var(--header-h) + 40px); min-height:100vh; }
+    .breadcrumb { font-size:.78rem; color:var(--muted); margin-bottom:32px; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+    .breadcrumb a:hover { color:var(--terracotta); }
+    .breadcrumb span { color:var(--charcoal); }
+    #product-main { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; margin-bottom:80px; }
+    @media(max-width:900px){ #product-main { grid-template-columns:1fr; gap:32px; } }
+    .related-section { background:var(--blush); padding:60px 0; }
+    .hidden{display:none!important;}
+    .product-card__body{text-decoration:none;display:block;}
+  </style>
+</head>
+<body>
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <nav class="header-nav">
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/shop.html">Boutique</a></li>
+        <li><a href="/admin/" style="opacity: 0.3; font-size: 0.65rem; margin-left: 10px; display: inline-block;">ZT</a></li>
+      </ul>
+    </nav>
+    <a href="/" class="header-logo" style="justify-self:center"><span class="logo-text">Zeiskin</span></a>
+    <div class="header-actions">
+      <button class="icon-btn" data-search-open>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="icon-btn" data-cart-open id="cart-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="/">Accueil</a>
+  <a href="/shop.html">Boutique</a>
+  <a href="/admin/" style="opacity: 0.2; font-size: 0.7rem; margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 20px;">ZT Admin</a>
+</nav>
+
+<main class="product-page">
+  <div class="container">
+    <nav class="breadcrumb" id="breadcrumb">
+      <a href="/">Accueil</a><span>/</span><a href="/shop.html">Boutique</a>
+    </nav>
+    <div id="product-main">
+      <!-- Chargé par product.js -->
+    </div>
+  </div>
+
+  <!-- Related Products -->
+  <section class="related-section" id="related-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Vous aimerez aussi</span>
+        <h2>Produits similaires</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="products-grid" id="related-grid"></div>
+    </div>
+  </section>
+</main>
+
+<!-- Side Cart -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="side-cart" id="side-cart">
+  <div class="cart-header">
+    <h3>Mon Panier</h3>
+    <button class="cart-close" id="cart-close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="cart-empty" class="cart-empty">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <p>Votre panier est vide</p>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer hidden" id="cart-footer">
+    <div class="cart-total"><span>Total</span><span class="total-amount" id="cart-total-amount">0 FCFA</span></div>
+    <button class="btn btn-wa btn-full" id="whatsapp-checkout-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      Commander via WhatsApp
+    </button>
+    <p class="cart-note">Redirigé vers WhatsApp pour finaliser</p>
+  </div>
+</aside>
+
+<a href="https://wa.me/221703046152?text=Bonjour%20ZEISKIN%20%F0%9F%8C%BF" class="wa-fab" target="_blank">
+  <span class="wa-pulse"></span>
+  <span class="wa-fab-tooltip">Support WhatsApp</span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+</a>
+<div id="toast-container" class="toast-container"></div>
+
+<script src="/js/api.js"></script>
+<script src="/js/cart.js"></script>
+<script src="/js/product.js"></script>
+</body>
+</html>
