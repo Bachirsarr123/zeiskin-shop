@@ -70,6 +70,22 @@ document.addEventListener('DOMContentLoaded', () => {
   initLoginForm();
   // Set logout button
   document.getElementById('logout-btn')?.addEventListener('click', () => AdminAuth.logout());
+
+  // Sidebar Toggle for Mobile
+  const toggleBtn = document.getElementById('sidebar-toggle');
+  const sidebar = document.getElementById('admin-sidebar');
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sidebar.classList.toggle('open');
+    });
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+      if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== toggleBtn) {
+        sidebar.classList.remove('open');
+      }
+    });
+  }
 });
 
 window.AdminAuth = AdminAuth;
