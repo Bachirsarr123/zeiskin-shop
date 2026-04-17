@@ -206,7 +206,7 @@ const ProductPage = {
     style.textContent = `
       .product-gallery { display: flex; flex-direction: column; gap: 12px; }
       .gallery-main { position: relative; border-radius: 16px; overflow: hidden; background: var(--blush); aspect-ratio: 4/5; }
-      .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+      .gallery-main img { width: 100%; height: 100%; object-fit: contain; background: var(--blush); }
       .gallery-nav {
         position: absolute; top: 50%; transform: translateY(-50%);
         width: 40px; height: 40px; border-radius: 50%;
@@ -219,7 +219,7 @@ const ProductPage = {
       .gallery-thumbs { display: flex; gap: 8px; overflow-x: auto; }
       .thumb { width: 72px; height: 84px; border-radius: 8px; overflow: hidden; cursor: pointer; border: 2px solid transparent; flex-shrink: 0; transition: border-color .2s; }
       .thumb.active { border-color: var(--terracotta); }
-      .thumb img { width: 100%; height: 100%; object-fit: cover; }
+      .thumb img { width: 100%; height: 100%; object-fit: contain; background: var(--blush); }
       .product-category-label { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 8px; }
       .product-title { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--charcoal); margin-bottom: 16px; line-height: 1.2; }
       .product-price-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
