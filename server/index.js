@@ -26,6 +26,40 @@ app.use('/api/orders', require('./routes/orders'));
 app.use('/api/settings', require('./routes/settings'));
 app.use('/api/faqs', require('./routes/faqs'));
 
+// SEO — Sitemap
+app.get('/sitemap.xml', (req, res) => {
+  res.header('Content-Type', 'application/xml');
+  res.send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://zeiskin.sn/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://zeiskin.sn/shop.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://zeiskin.sn/product.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>`);
+});
+
+// SEO — Robots.txt
+app.get('/robots.txt', (req, res) => {
+  res.header('Content-Type', 'text/plain');
+  res.send(`User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://zeiskin.sn/sitemap.xml`);
+});
+
 // SPA fallback — serve HTML for all non-API routes
 app.get(/^(?!\/api).*/, (req, res) => {
   // Route admin pages
