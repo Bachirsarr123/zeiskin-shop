@@ -26,10 +26,22 @@ app.use('/api/orders', require('./routes/orders'));
 app.use('/api/settings', require('./routes/settings'));
 app.use('/api/faqs', require('./routes/faqs'));
 
-// SEO — Sitemap
-app.get('/sitemap.xml', (req, res) => {
-  res.header('Content-Type', 'application/xml');
-  res.send(`<?xml version="1.0" encoding="UTF-8"?>
+// SEO — Sitemap dynamique
+app.get('/sitemap.xml', async (req, res) => {
+  try {
+    const Product = require('./models/Product');
+    const products = await Product.findAll({ where: { isActive: true }, attributes: ['id', 'slug', 'updatedAt'] });
+
+    const productUrls = products.map(p => `
+  <url>
+    <loc>https://zeiskin.sn/product.html?id=${p.id}</loc>
+    <changefreq>weekly</changefreq>
+    <lastmod>${new Date(p.updatedAt).toISOString().split('T')[0]}</lastmod>
+    <priority>0.8</priority>
+  </url>`).join('');
+
+    res.header('Content-Type', 'application/xml');
+    res.send(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zeiskin.sn/</loc>
@@ -40,13 +52,12 @@ app.get('/sitemap.xml', (req, res) => {
     <loc>https://zeiskin.sn/shop.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://zeiskin.sn/product.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  </url>${productUrls}
 </urlset>`);
+  } catch (err) {
+    console.error('Sitemap error:', err);
+    res.status(500).send('Erreur génération sitemap');
+  }
 });
 
 // SEO — Robots.txt
