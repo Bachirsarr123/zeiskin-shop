@@ -210,7 +210,7 @@ async function loadCategories() {
     grid.innerHTML = categories.map(cat => `
       <a href="/shop.html?category=${cat._id}" class="category-card fade-up">
         <div class="category-card__img" style="background:var(--blush-dark);width:100%;height:100%;position:absolute;inset:0">
-          ${cat.image?.url ? `<img src="${cat.image.url}" alt="${cat.name}" style="width:100%;height:100%;object-fit:cover">` : ''}
+          ${cat.image?.url ? `<img src="${cat.image.url}" alt="${cat.name}" style="width:100%;height:100%;object-fit:contain;background:var(--blush-dark)">` : ''}
         </div>
         <div class="category-card__overlay">
           <div class="category-card__info">
