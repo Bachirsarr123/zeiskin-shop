@@ -10,8 +10,8 @@
 :root {
   /* Colors */
   --cream:        #FDFAF7;
-  --blush:        #F5EDE6;
-  --blush-dark:   #EDD9CE;
+  --blush:        #fcf0f2;
+  --blush-dark:   #f9e1e5;
   --terracotta:   #C27B5A;
   --terracotta-d: #A8623F;
   --sand:         #E8D5C4;
@@ -387,7 +387,7 @@ p  { font-size: .95rem; color: var(--muted); line-height: 1.7; }
 .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
 .product-card__img {
-  aspect-ratio: 3/4;
+  aspect-ratio: 1/1;
   overflow: hidden;
   position: relative;
   background: var(--blush);
@@ -789,7 +789,7 @@ section { padding: 80px 0; }
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  aspect-ratio: 4/5;
+  aspect-ratio: 1/1;
   cursor: pointer;
 }
 .category-card__img {

@@ -51,7 +51,7 @@ const ShopPage = {
     // Show skeletons
     grid.innerHTML = Array(8).fill(`
       <div class="product-card">
-        <div class="product-card__img skeleton" style="aspect-ratio:3/4"></div>
+        <div class="product-card__img skeleton" style="aspect-ratio:1/1"></div>
         <div class="product-card__body">
           <div class="skeleton" style="height:12px;width:50%;margin-bottom:8px;border-radius:3px"></div>
           <div class="skeleton" style="height:18px;width:85%;margin-bottom:8px;border-radius:3px"></div>

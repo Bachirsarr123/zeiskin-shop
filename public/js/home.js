@@ -176,7 +176,7 @@ async function loadFeaturedProducts() {
   // Skeleton
   grid.innerHTML = Array(4).fill(`
     <div class="product-card">
-      <div class="product-card__img skeleton" style="aspect-ratio:3/4"></div>
+      <div class="product-card__img skeleton" style="aspect-ratio:1/1"></div>
       <div class="product-card__body">
         <div class="skeleton" style="height:14px;width:60%;margin-bottom:8px;border-radius:4px"></div>
         <div class="skeleton" style="height:18px;width:80%;margin-bottom:8px;border-radius:4px"></div>
